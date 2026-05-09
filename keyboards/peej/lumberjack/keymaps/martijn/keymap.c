@@ -71,10 +71,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-------------------------------------------------------------------------------------'
  */
 [_BASE] = LAYOUT_ortho_5x12( \
-  KC_ESC,   KC_1,    KC_2,       KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,       KC_0,    KC_BSPC, \
-  KC_TAB,   KC_Q,    KC_W,       KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,       KC_P,    KC_BSLS, \
-  POKER,    KC_A,    KC_S,       KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,       KC_SCLN, KC_ENT, \
-  SC_LSPO,  KC_Z,    KC_X,       KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,     KC_SLSH, SC_RSPC, \
+  KC_ESC,   KC_1,    KC_2,       KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,             KC_0,    KC_BSPC, \
+  KC_TAB,   KC_Q,    KC_W,       KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,             KC_P,    KC_BSLS, \
+  POKER,    KC_A,    KC_S,       KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,             KC_SCLN, KC_ENT, \
+  SC_LSPO,  KC_Z,    KC_X,       KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,           KC_SLSH, SC_RSPC, \
   KC_LCTL,  EXTR,    KC_LGUI,    KC_LALT, PROG,    PROG,    KC_SPC,  KC_SPC,  KC_LALT, TD(TD_BRACKETS),  KC_PSCR, KC_LCTL
 ),
 
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,   QK_BOOT,        EE_CLR,       QK_REBOOT,        _______,   _______,   _______,   KC_MINS, KC_EQL,  _______, _______, _______, \
   _______,   _______,        _______,      _______,          _______,   _______,   _______,   KC_7,    KC_8,    KC_9,    _______, _______, \
   _______,   _______,        _______,      _______,          _______,   _______,   HEADP,     KC_4,    KC_5,    KC_6,    KC_DEL,  _______, \
-  _______,   _______,        _______,      _______,          NVIM_CFG,  _______,   _______,   KC_1,    KC_2,    KC_3,    _______, _______, \
+  _______,   _______,        _______,      _______,          _______,   _______,   _______,   KC_1,    KC_2,    KC_3,    _______, _______, \
   _______,   _______,        _______,      _______,          _______,   _______,   _______,   _______, KC_0,    KC_0,    KC_0,    _______
 )
 
@@ -156,35 +156,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   switch (keycode) {
-      case NVIM_CFG:
-        if (record->event.pressed) {
-          SEND_STRING(
-            "local o=vim.opt\n"
-            "o.number=true\n"
-            "o.relativenumber=true\n"
-            "o.ignorecase=true\n"
-            "o.smartcase=true\n"
-            "o.swapfile=false\n"
-            "o.undofile=true\n"
-            "o.wildoptions=\"pum\"\n"
-            "o.wildmode=\"longest:full,full\"\n"
-            "o.completeopt=\"menu,menuone,noinsert\"\n"
-            "o.complete=\".\"\n"
-            "o.infercase=true\n"
-            "o.pumheight=15\n"
-            "o.pumwidth=30\n"
-            "o.foldenable=true\n"
-            "o.foldlevel=20\n"
-            "o.foldmethod=\"indent\"\n"
-            "o.sessionoptions=\"blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,globals\"\n"
-            "local m=vim.keymap.set\n"
-            "m('t','<Esc>',[[<C-\\><C-n>]],{silent=true})\n"
-            "m('t','<S-Esc>','<Esc>',{silent=true})\n"
-            "m('n','-',function()if vim.fn.winnr(\"$\")==1 then return end;if vim.api.nvim_win_get_width(0)>=vim.o.columns-2 then vim.cmd(\"resize -3\")else vim.cmd(\"vertical resize -3\")end end)\n"
-            "m('n','+',function()if vim.fn.winnr(\"$\")==1 then return end;if vim.api.nvim_win_get_width(0)>=vim.o.columns-2 then vim.cmd(\"resize +3\")else vim.cmd(\"vertical resize +3\")end end)\n"
-          );
-        }
-        break;
     case C_HOME:
       if (record->event.pressed) {
         SEND_STRING("~/");

@@ -1,4 +1,4 @@
-#define TAPPING_TERM 235
+#define TAPPING_TERM 225
 #define PERMISSIVE_HOLD
 
 #define COPY        LCTL(KC_C)
