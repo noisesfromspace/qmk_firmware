@@ -22,7 +22,7 @@
 #define _EXTRA   4
 
 #define PROG   MO(_PROGRAM)
-#define POKER  LT(_POKER, KC_ESC)
+#define POKER  MO(_POKER)
 #define EXTR   MO(_EXTRA)
 
 // Define a type containing as many tapdance states as you need
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,    KC_W,       KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,             KC_P,    KC_BSLS, \
   POKER,    KC_A,    KC_S,       KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,             KC_SCLN, KC_ENT, \
   SC_LSPO,  KC_Z,    KC_X,       KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,           KC_SLSH, SC_RSPC, \
-  KC_LCTL,  EXTR,    KC_LGUI,    KC_LALT, PROG,    PROG,    KC_SPC,  KC_SPC,  KC_LALT, TD(TD_BRACKETS),  KC_PSCR, KC_LCTL
+  KC_LCTL,  EXTR,    KC_LGUI,    KC_LALT, PROG,    PROG,    KC_SPC,  KC_SPC,  KC_LALT, KC_LGUI,          KC_PSCR, KC_LCTL
 ),
 
 
@@ -97,10 +97,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_SELECT] = LAYOUT_ortho_5x12( \
   _______,   _______,  _______,   _______, _______, _______, _______, _______, _______,  _______,  _______, _______, \
-  _______,   _______,  KC_W,      _______, KC_R,    KC_T,    _______, _______, KC_UP,    _______,  _______, _______, \
+  _______,   _______,  KC_W,      _______, KC_R,    KC_T,    _______, _______, KC_UP,    _______,  KC_P,    _______, \
   _______,   _______,  _______,   _______, KC_F,    _______, _______, KC_LEFT, KC_DOWN,  KC_RIGHT, KC_BSPC, KC_ENT,  \
   _______,   _______,  _______,   KC_C,    KC_V,    _______, _______, _______, _______,  _______,  _______, _______, \
-  _______,   _______,  _______,   _______, _______, _______, _______, _______, _______,  _______,  _______, _______
+  _______,   _______,  _______,   _______, _______, _______, KC_N,    _______, _______,  _______,  _______, _______
 ),
 
 [_EXTRA] = LAYOUT_ortho_5x12( \
